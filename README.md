@@ -1,10 +1,10 @@
 ## Whitespace
 
- * Spaces, not tabs.
+ * Spaces, not tabs. Use 4 spaces for indenting.
  * End files with a newline.
  * No double returns.
  * Always use a fixed width font.
- * Prefer spaces after :
+ * Prefer spaces after colons. As in:
 
 ```objc
  - (void)viewWillAppear: (BOOL)animated
@@ -31,8 +31,8 @@
 
 ## Declarations
 
- * Never declare an ivar unless you need to change its type from its declared property.
- * Prefer exposing an immutable type for a property if it being mutable is an implementation detail. This is a valid reason to declare an ivar for a property. I would prefer writing getters and setters explicitly to using ivars.
+ * Never declare an ivar.
+ * If exposing an immutable type for a mutable property is required, write a custom setter that to writes to the auto-generated ivar.
  * Always declare memory-management semantics even on `readonly` properties.
  * Declare properties `readonly` if they are only set once in `-init`.
  * Don't use `@synthesize` unless the compiler requires it. Note that optional properties in protocols must be explicitly synthesized in order to exist.
@@ -51,7 +51,7 @@ void GHAwesomeFunction(BOOL hasSomeArgs);
  * Comparisons should be explicit for everything except `BOOL`s.
  * Prefer positive comparisons to negative.
  * Long form ternary operators should be wrapped in parentheses and only used for assignment and arguments.
- * nil or NULL? (I'm old school nil, but I've been warming to NULL)
+ * Use `nil` instead of `NULL`.
 
 ```objc
 Blah *a = (stuff == thing ? foo : bar);
@@ -72,8 +72,8 @@ NewType a = (NewType)b;
 ## Control Structures
 
  * Always surround `if` bodies with curly braces.
- * Never use Single-line `if` bodies.
- * All curly braces should begin on the same line as their associated statement (except for method implementations). They should end on a new line.
+ * Never use single-line `if` bodies.
+ * All curly braces should begin on the same line as their associated statement, except for method implementations. They should end on a new line.
  * Put a single space after keywords and before their parentheses.
  * Break early.
  * Never return inside a method.
@@ -82,7 +82,7 @@ NewType a = (NewType)b;
 ```objc
 if (shitIsBad) {
 	// do stuff
- }
+}
 
 if (something == nil) {
 	// do stuff
