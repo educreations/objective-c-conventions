@@ -19,11 +19,13 @@
  * Comments should be hard-wrapped at 80 characters. -80 seems harsh this is 80|
  * Comments should be like this:
 
+```objc
 // some comment
 // that takes several
 // lines
 
 /* or if you have an inline comment */
+```objc
 
  * Use `#pragma mark`s to categorize methods and protocol implementations.
 
