@@ -16,7 +16,7 @@
 ## Documentation
 
  * All method declarations should be documented.
- * Comments should be hard-wrapped at 80 characters. -80 seems harsh this is 80|
+ * Comments should be hard-wrapped at 80 characters.
  * Comments should be like this:
 
 ```objc
@@ -29,6 +29,22 @@
 
  * Use `#pragma mark`s to categorize methods and protocol implementations.
 
+## Imports
+
+ * Sort `#import` and `#include` alphabetically
+ * Frameworks first
+ * Counterparts second
+ * Everything else third
+
+```objc
+#import <UIKit/UIKit.h>
+
+#import "MyClass.h"
+
+#import "bar.h"
+#import "foo.h"
+```
+
 ## Declarations
 
  * Never declare an ivar.
@@ -36,7 +52,6 @@
  * Always declare memory-management semantics even on `readonly` properties.
  * Declare properties `readonly` if they are only set once in `-init`.
  * Don't use `@synthesize` unless the compiler requires it. Note that optional properties in protocols must be explicitly synthesized in order to exist.
- * Instance variables should be prefixed with an underscore (just like when implicitly synthesized).
  * C function declarations should have no space before the opening parenthesis, and should be namespaced just like a class.
 
 ```objc
@@ -45,7 +60,7 @@ void GHAwesomeFunction(BOOL hasSomeArgs);
 
 ## Expressions
 
- * Don't access an ivar unless you're in `-init` or `-dealloc`.
+ * Don't access a property directly unless you're in `-init` or `-dealloc` or a custom setter.
  * Use dot-syntax for "simple" getters and setters, including class methods (like `NSFileManager.defaultManager`).
  * Use object literals, boxed expressions, and subscripting over the older, grosser alternatives.
  * Comparisons should be explicit for everything except `BOOL`s.
@@ -76,7 +91,7 @@ NewType a = (NewType)b;
  * All curly braces should begin on the same line as their associated statement, except for method implementations. They should end on a new line.
  * Put a single space after keywords and before their parentheses.
  * Break early.
- * Never return inside a method.
+ * Avoid a return inside a method.
  * No spaces between parentheses and their contents.
 
 ```objc
