@@ -2,18 +2,35 @@
 
  * Spaces, not tabs.
  * End files with a newline.
+ * No double returns.
+ * Always use a fixed width font.
+ * Prefer spaces after :
+
+```objc
+ - (void)viewWillAppear: (BOOL)animated
+ {
+
+ }
+```
 
 ## Documentation
 
  * All method declarations should be documented.
- * Comments should be hard-wrapped at 80 characters.
- * Comments should be [Tomdoc](http://tomdoc.org/)-style.
+ * Comments should be hard-wrapped at 80 characters. -80 seems harsh this is 80|
+ * Comments should be like this:
+
+// some comment
+// that takes several
+// lines
+
+/* or if you have an inline comment */
+
  * Use `#pragma mark`s to categorize methods and protocol implementations.
 
 ## Declarations
 
  * Never declare an ivar unless you need to change its type from its declared property.
- * Prefer exposing an immutable type for a property if it being mutable is an implementation detail. This is a valid reason to declare an ivar for a property.
+ * Prefer exposing an immutable type for a property if it being mutable is an implementation detail. This is a valid reason to declare an ivar for a property. I would prefer writing getters and setters explicitly to using ivars.
  * Always declare memory-management semantics even on `readonly` properties.
  * Declare properties `readonly` if they are only set once in `-init`.
  * Don't use `@synthesize` unless the compiler requires it. Note that optional properties in protocols must be explicitly synthesized in order to exist.
@@ -32,6 +49,7 @@ void GHAwesomeFunction(BOOL hasSomeArgs);
  * Comparisons should be explicit for everything except `BOOL`s.
  * Prefer positive comparisons to negative.
  * Long form ternary operators should be wrapped in parentheses and only used for assignment and arguments.
+ * nil or NULL? (I'm old school nil, but I've been warming to NULL)
 
 ```objc
 Blah *a = (stuff == thing ? foo : bar);
@@ -51,14 +69,18 @@ NewType a = (NewType)b;
 
 ## Control Structures
 
- * Always surround `if` bodies with curly braces if there is an `else`. Single-line `if` bodies without an `else` should be on the same line as the `if`.
- * All curly braces should begin on the same line as their associated statement. They should end on a new line.
+ * Always surround `if` bodies with curly braces.
+ * Never use Single-line `if` bodies.
+ * All curly braces should begin on the same line as their associated statement (except for method implementations). They should end on a new line.
  * Put a single space after keywords and before their parentheses.
- * Return and break early.
+ * Break early.
+ * Never return inside a method.
  * No spaces between parentheses and their contents.
 
 ```objc
-if (shitIsBad) return;
+if (shitIsBad) {
+	// do stuff
+ }
 
 if (something == nil) {
 	// do stuff
