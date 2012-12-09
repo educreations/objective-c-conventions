@@ -13,10 +13,11 @@
  }
 ```
 
-## Documentation
+## Documentation and Organization
 
  * All method declarations should be documented.
  * Comments should be hard-wrapped at 80 characters.
+ * Comments should be [Tomdoc](http://tomdoc.org/)-style.
  * Comments should be like this:
 
 ```objc
@@ -27,7 +28,38 @@
 /* or if you have an inline comment */
 ```
 
- * Use `#pragma mark`s to categorize methods and protocol implementations.
+ * Use `#pragma mark`s to categorize methods into functional groupings and protocol implementations, following this general structure:
+
+```objc
+#pragma mark Properties
+
+@dynamic someProperty;
+
+- (void)setCustomProperty:(id)value {}
+
+#pragma mark Lifecycle
+
++ (id)objectWithThing:(id)thing {}
+- (id)init {}
+
+#pragma mark Drawing
+
+- (void)drawRect:(CGRect) {}
+
+#pragma mark Another functional grouping
+
+#pragma mark GHSuperclass
+
+- (void)someOverriddenMethod {}
+
+#pragma mark NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {}
+
+#pragma mark NSObject
+
+- (NSString *)description {}
+```
 
 ## Imports
 
@@ -47,16 +79,27 @@
 
 ## Declarations
 
+ * Don’t use line breaks in method declarations.
  * Never declare an ivar.
  * If exposing an immutable type for a mutable property is required, write a custom setter that to writes to the auto-generated ivar.
  * Always declare memory-management semantics even on `readonly` properties.
  * Declare properties `readonly` if they are only set once in `-init`.
  * Don't use `@synthesize` unless the compiler requires it. Note that optional properties in protocols must be explicitly synthesized in order to exist.
+ * Instance variables should be prefixed with an underscore (just like when implicitly synthesized).
+ * Don't put a space between an object type and the protocol it conforms to.
+
+```objc
+@property (attributes) id<Protocol> object;
+@property (nonatomic, strong) NSObject<Protocol> *object;
+```
+
  * C function declarations should have no space before the opening parenthesis, and should be namespaced just like a class.
 
 ```objc
 void GHAwesomeFunction(BOOL hasSomeArgs);
 ```
+
+ * Constructors should generally return `instancetype` rather than `id`.
 
 ## Expressions
 
