@@ -99,7 +99,7 @@
 void GHAwesomeFunction(BOOL hasSomeArgs);
 ```
 
- * Constructors should generally return `instancetype` rather than `id`.
+ * Constructors should generally return `instancetype` rather than `id`. Especially class constructors. [More on `instancetype`](http://nshipster.com/instancetype/).
 
 ## Expressions
 
