@@ -1,3 +1,27 @@
+# What is this?
+
+This is meant to be a guide for new code. The guidelines here are intended
+to improve the readability of code and make it consistent.
+
+A style gude is about consistency. Consistency with this style guide is
+important. Consistency within a project is more important. Consistency
+within one module or function is most important.
+
+But most importantly: know when to be inconsistent -- sometimes the
+style guide just doesn't apply. When in doubt, use your best judgment.
+Look at other examples and decide what looks best. And don't hesitate
+to ask!
+
+Two good reasons to break a particular rule:
+
+1. When applying the rule would make the code less readable, even for
+   someone who is used to reading code that follows the rules.
+2. To be consistent with surrounding code that also breaks it (maybe for
+   historic reasons) -- although this is also an opportunity to clean up
+   someone else's mess (in true XP style).
+
+_Source: Python's PEP 8, [A Foolish Consistency is the Hobgoblin of Little Minds][pep8]_
+
 ## Whitespace
 
  * Spaces, not tabs. Use 4 spaces for indenting.
@@ -192,3 +216,6 @@ NSDictionary *keyedShit = @{
  * Categories should be named for the sort of functionality they provide. Don't create umbrella categories.
  * Category methods should always be prefixed.
  * If you need to expose private methods for subclasses or unit testing, create a class extension named `Class+Private`.
+
+
+[pep8]: http://www.python.org/dev/peps/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds
