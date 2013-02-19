@@ -30,7 +30,6 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
 
  * Spaces, not tabs. Use 4 spaces for indenting.
  * End files with a newline.
- * Always use a fixed width font.
  * Make liberal use of vertical whitespace to divide code into logical chunks.
 
 ## Documentation and Organization
