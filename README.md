@@ -100,7 +100,7 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
 
  * Don’t use line breaks in method declarations.
  * Never declare an ivar.
- * If exposing an immutable type for a mutable property is required, write a custom setter that to writes to the auto-generated ivar.
+ * If exposing an immutable type for a mutable property is required, write a custom setter that writes to the auto-generated ivar.
  * Always declare memory-management semantics even on `readonly` properties.
  * Declare properties `readonly` if they are only set once in `-init`.
  * Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
