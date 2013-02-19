@@ -158,8 +158,7 @@ NewType a = (NewType)b;
  * Never use single-line `if` bodies.
  * All curly braces should begin on the same line as their associated statement, except for method implementations. They should end on a new line.
  * Put a single space after keywords and before their parentheses.
- * Break early.
- * Avoid a return inside a method.
+ * Return and break early.
  * No spaces between parentheses and their contents.
 
 ```objc
