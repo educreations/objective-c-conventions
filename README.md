@@ -123,12 +123,12 @@ void GHAwesomeFunction(BOOL hasSomeArgs);
  * Prefer C99 struct initialiser syntax to helper functions (such as `CGRectMake()`).
 
 ```objc
-  CGRect rect = { .origin.x = 3.0, .origin.y = 12.0, .size.width = 15.0, size.height = 80.0 };
+  CGRect rect = { .origin.x = 3.0, .origin.y = 12.0, .size.width = 15.0, .size.height = 80.0 };
    ```
 
 ## Expressions
 
- * Don't access a property directly unless you're in `-init` or `-dealloc` or a custom setter.
+ * Don't access an ivar unless you're in `-init`, `-dealloc` or a custom accessor.
  * Use dot-syntax when invoking idempotent methods, including setters and class methods (like `NSFileManager.defaultManager`).
  * Use object literals, boxed expressions, and subscripting over the older, grosser alternatives.
  * Comparisons should be explicit for everything except `BOOL`s.
