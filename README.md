@@ -22,6 +22,10 @@ Two good reasons to break a particular rule:
 
 _Source: Python's PEP 8, [A Foolish Consistency is the Hobgoblin of Little Minds][pep8]_
 
+
+These guidelines build on Apple's existing [Coding Guidelines for Cocoa](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html).
+Unless explicitly contradicted below, assume that all of Apple's guidelines apply as well.
+
 ## Whitespace
 
  * Spaces, not tabs. Use 4 spaces for indenting.
@@ -117,11 +121,16 @@ void GHAwesomeFunction(BOOL hasSomeArgs);
 ```
 
  * Constructors should generally return `instancetype` rather than `id`. Especially class constructors. [More on `instancetype`](http://nshipster.com/instancetype/).
+ * Prefer C99 struct initialiser syntax to helper functions (such as `CGRectMake()`).
+
+```objc
+  CGRect rect = { .origin.x = 3.0, .origin.y = 12.0, .size.width = 15.0, size.height = 80.0 };
+   ```
 
 ## Expressions
 
  * Don't access a property directly unless you're in `-init` or `-dealloc` or a custom setter.
- * Use dot-syntax for "simple" getters and setters, including class methods (like `NSFileManager.defaultManager`).
+ * Use dot-syntax when invoking idempotent methods, including setters and class methods (like `NSFileManager.defaultManager`).
  * Use object literals, boxed expressions, and subscripting over the older, grosser alternatives.
  * Comparisons should be explicit for everything except `BOOL`s.
  * Prefer positive comparisons to negative.
@@ -184,6 +193,7 @@ id (^blockName2)(id) = ^ id (id args) {
 
 ## Literals
 
+ * Avoid making numbers a specific type unless necessary (for example, prefer `5` to `5.0`, and `5.3` to `5.3f`).
  * The contents of array and dictionary literals should have a space on both sides.
  * Dictionary literals should have no space between the key and the colon, and a single space between colon and value.
 
