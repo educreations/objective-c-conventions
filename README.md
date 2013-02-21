@@ -31,6 +31,9 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
  * Spaces, not tabs. Use 4 spaces for indenting.
  * End files with a newline.
  * Make liberal use of vertical whitespace to divide code into logical chunks.
+ * If using Xcode, turn on the "Automatically trim trailing whitespace" and
+   "Including whitespace-only lines" options in the Text Editing section of
+   Xcode's preferences.
 
 ## Documentation and Organization
 
