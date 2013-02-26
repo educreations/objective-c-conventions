@@ -40,16 +40,6 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
  * All method declarations should be documented.
  * Comments should be hard-wrapped at 80 characters.
  * Comments should be [Tomdoc](http://tomdoc.org/)-style.
- * Comments should be like this:
-
-```objc
-// some comment
-// that takes several
-// lines
-
-/* or if you have an inline comment */
-```
-
  * Use `#pragma mark`s to categorize methods into functional groupings and protocol implementations, following this general structure:
 
 ```objc
@@ -101,9 +91,9 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
 
 ## Declarations
 
+ * Never declare an ivar unless you need to change its type from its declared property.
  * Don’t use line breaks in method declarations.
- * Never declare an ivar.
- * If exposing an immutable type for a mutable property is required, write a custom setter that writes to the auto-generated ivar.
+ * Prefer exposing an immutable type for a property if it being mutable is an implementation detail. This is a valid reason to declare an ivar for a property.
  * Always declare memory-management semantics even on `readonly` properties.
  * Declare properties `readonly` if they are only set once in `-init`.
  * Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
