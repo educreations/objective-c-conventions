@@ -139,10 +139,15 @@ Blah *a = (stuff == thing ? foo : bar);
 Blah *b = thingThatCouldBeNil ?: defaultValue;
 ```
 
- * There shouldn't be a space between a cast and the variable being cast.
+ * Separate binary operands with a single space, but unary operands and casts with none:
 
-``` objc
+```c
+void *ptr = &value + 10 * 3;
 NewType a = (NewType)b;
+
+for (int i = 0; i < 10; i++) {
+    doCoolThings();
+}
 ```
 
 ## Control Structures
@@ -165,6 +170,12 @@ if (something == nil) {
 	// do other stuff
 }
 ```
+
+## Exceptions and Error Handling
+
+ * Don't use exceptions for flow control.
+ * Use exceptions only to indicate programmer error.
+ * To indicate errors, use an `NSError **` argument or send an error on a [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) signal.
 
 ## Blocks
 
