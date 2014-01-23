@@ -40,6 +40,7 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
  * All method declarations should be documented.
  * Comments should be hard-wrapped at 80 characters.
  * Comments should be [Tomdoc](http://tomdoc.org/)-style.
+ * Document whether object parameters allow `nil` as a value.
  * Use `#pragma mark`s to categorize methods into functional groupings and protocol implementations, following this general structure:
 
 ```objc
@@ -51,8 +52,8 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
 
 #pragma mark Lifecycle
 
-+ (id)objectWithThing:(id)thing {}
-- (id)init {}
++ (instancetype)objectWithThing:(id)thing {}
+- (instancetype)init {}
 
 #pragma mark Drawing
 
@@ -96,8 +97,8 @@ Unless explicitly contradicted below, assume that all of Apple's guidelines appl
  * Prefer exposing an immutable type for a property if it being mutable is an implementation detail. This is a valid reason to declare an ivar for a property.
  * Always declare memory-management semantics even on `readonly` properties.
  * Declare properties `readonly` if they are only set once in `-init`.
- * Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
  * Don't use `@synthesize` unless the compiler requires it. Note that optional properties in protocols must be explicitly synthesized in order to exist.
+ * Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation. `strong` should only be used when exposing a mutable object, or an object that does not conform to `<NSCopying>`.
  * Instance variables should be prefixed with an underscore (just like when implicitly synthesized).
  * Don't put a space between an object type and the protocol it conforms to.
 
@@ -160,8 +161,8 @@ for (int i = 0; i < 10; i++) {
  * No spaces between parentheses and their contents.
 
 ```objc
-if (shitIsBad) {
-	// do stuff
+if (somethingIsBad) {
+    return;
 }
 
 if (something == nil) {
@@ -201,21 +202,21 @@ id (^blockName2)(id) = ^ id (id args) {
  * Dictionary literals should have no space between the key and the colon, and a single space between colon and value.
 
 ``` objc
-NSArray *theShit = @[ @1, @2, @3 ];
+NSArray *theStuff = @[ @1, @2, @3 ];
 
-NSDictionary *keyedShit = @{ GHDidCreateStyleGuide: @YES };
+NSDictionary *keyedStuff = @{ GHDidCreateStyleGuide: @YES };
 ```
 
  * Longer or more complex literals should be split over multiple lines (optionally with a terminating comma):
 
 ``` objc
-NSArray *theShit = @[
+NSArray *theStuff = @[
     @"Got some long string objects in here.",
     [AndSomeModelObjects too],
     @"Moar strings."
 ];
 
-NSDictionary *keyedShit = @{
+NSDictionary *keyedStuff = @{
     @"this.key": @"corresponds to this value",
     @"otherKey": @"remoteData.payload",
     @"some": @"more",
