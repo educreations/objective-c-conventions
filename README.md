@@ -198,13 +198,12 @@ id (^blockName2)(id) = ^ id (id args) {
 ## Literals
 
  * Avoid making numbers a specific type unless necessary (for example, prefer `5` to `5.0`, and `5.3` to `5.3f`).
- * The contents of array and dictionary literals should have a space on both sides.
  * Dictionary literals should have no space between the key and the colon, and a single space between colon and value.
 
 ``` objc
-NSArray *theStuff = @[ @1, @2, @3 ];
+NSArray *theStuff = @[@1, @2, @3];
 
-NSDictionary *keyedStuff = @{ GHDidCreateStyleGuide: @YES };
+NSDictionary *keyedStuff = @{GHDidCreateStyleGuide: @YES};
 ```
 
  * Longer or more complex literals should be split over multiple lines (optionally with a terminating comma):
